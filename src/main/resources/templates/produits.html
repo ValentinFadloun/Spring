@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Produits</title>
+		<style>
+			@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+		</style>
+	</head>
+	<body>
+	<div class="container">
+		<form th:action="@{index}" method="get">
+			<label>
+				Mot clé :
+			</label>
+			<input type="text" name="mc" th:value="${motCle}"/>
+			<button class="btn btn-primary">Chercher</button>
+		</form>
+	</div>
+	<div class="container">
+		<h1>Test</h1>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Désognation</th>
+						<th>Prix</th>
+						<th>Quantité</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="p:${listProduits}">
+						<td th:text="${p.id}"></td>
+						<td th:text="${p.designation}"></td>
+						<td th:text="${p.prix}"></td>
+						<td th:text="${p.quantite}"></td>
+						<td><a th:href="@{delete(id=${p.id})}">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<ul class="nav nav-pills">
+				<li th:class="${pageCourante} == ${status.index} ? 'active' : '' " th:each="page,status:${pages}">
+					<a th:href="@{index(page=${status.index}, size=${size}, mc=${motCle})}" th:text="${status.count}"></a>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
