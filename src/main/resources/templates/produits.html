@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
 	<head>
 		<meta charset="UTF-8"/>
 		<title>Produits</title>
@@ -7,18 +7,18 @@
 			@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
 		</style>
 	</head>
-	<body>
-	<div class="container">
-		<form th:action="@{index}" method="get">
-			<label>
-				Mot clé :
-			</label>
-			<input type="text" name="mc" th:value="${motCle}"/>
-			<button class="btn btn-primary">Chercher</button>
-		</form>
-	</div>
-	<div class="container">
-		<h1>Test</h1>
+	<body layout:fragment="content">
+		<div class="container" >
+			<form th:action="@{index}" method="get">
+				<label>
+					Mot clé :
+				</label>
+				<input type="text" name="mc" th:value="${motCle}"/>
+				<button class="btn btn-primary">Chercher</button>
+			</form>
+		</div>
+		<div class="container">
+			<h1>Liste de produits</h1>
 			<table class="table">
 				<thead>
 					<tr>
@@ -34,7 +34,8 @@
 						<td th:text="${p.designation}"></td>
 						<td th:text="${p.prix}"></td>
 						<td th:text="${p.quantite}"></td>
-						<td><a th:href="@{delete(id=${p.id})}">Delete</a></td>
+						<td><a th:href="@{edit(id=${p.id})}">Edit</a></td>
+						<td><a onclick="return confirm('Etes vous sure ?')" th:href="@{delete(id=${p.id}, page=${pageCourante}, size=${size}, motCle=${motCle})}">Delete</a></td>
 					</tr>
 				</tbody>
 			</table>

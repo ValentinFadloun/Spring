@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Produits Ajout</title>
+		<style>
+			@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+			@import "/css/style.css"
+		</style>
+	</head>
+	<body layout:fragment="content">
+		<div class="col-md-6 col-xs-12 spacer">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Edit d'un produit
+				</div>
+				<div class="panel-body">
+					<form th:action="@{save}" method="post">
+						<div class="form-group">
+							<label class="control-label">
+								ID
+							</label>
+							<input type="text" th:value="${produit.id}" class="form-control" name="id"/>
+							<span class="red" th:errors="${produit.id}"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">
+								Désignation
+							</label>
+							<input type="text" th:value="${produit.designation}" class="form-control" name="designation"/>
+							<span class="red" th:errors="${produit.designation}"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">
+								Prix
+							</label>
+							<input type="number" th:value="${produit.prix}" class="form-control" name="prix"/>
+							<span class="red" th:errors="${produit.prix}"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">
+								Quantité
+							</label>
+							<input type="number" th:value="${produit.quantite}" class="form-control" name="quantite"/>
+							<span class="red" th:errors="${produit.quantite}"></span>
+						</div>
+						<div class="form-group">
+							<div>
+								<button type="submit" class="btn btn-primary">Save</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

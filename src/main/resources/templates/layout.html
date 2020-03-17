@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Gestion des produits</title>
+		<style>
+			@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="navbar navbar-default">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav">
+						<li><a th:href="@{index}">Chercher</a></li>
+						<li><a th:href="@{form}">Produits</a></li>
+					</ul>
+				</div>
+			</div>
+		</header>
+		<section layout:fragment="content">
+			
+		</section>
+		<footer class="navbar-fixed-bottom">
+			<hr/>
+			<div class="container">
+				<small>
+					Copyright @2020
+				</small>
+			</div>
+		</footer>
+	</body>
+</html>
